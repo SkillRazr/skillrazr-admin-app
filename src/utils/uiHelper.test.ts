@@ -17,4 +17,14 @@ describe('canWatchMovieToday', () => {
     const result = canWatchMovieToday('Monday', 70);
     expect(result).toEqual(false);
   });
+
+  it('should return true when the given day is Friday and score >= 90', () => {
+    const result = canWatchMovieToday('Friday', 90);
+    expect(result).toEqual(true);
+  });
+
+  it('should return true when the given day is Friday and score < 90', () => {
+    const result = canWatchMovieToday('Friday', 80);
+    expect(result).toEqual(false);
+  });
 });

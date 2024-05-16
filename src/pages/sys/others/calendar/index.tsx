@@ -16,7 +16,6 @@ import { useResponsive } from '@/theme/hooks';
 import CalendarEvent from './calendar-event';
 import CalendarEventForm, { CalendarEventFormFieldType } from './calendar-event-form';
 import CalendarHeader, { HandleMoveArg, ViewType } from './calendar-header';
-import { INITIAL_EVENTS } from './event-utils';
 import { StyledCalendar } from './styles';
 
 const DefaultEventInitValue = {
@@ -29,6 +28,7 @@ const DefaultEventInitValue = {
   color: '',
 };
 export default function Calendar() {
+  const [events, setEvents] = useState<any>([]);
   const fullCalendarRef = useRef<FullCalendar>(null);
   const [view, setView] = useState<ViewType>('dayGridMonth');
   const [date, setDate] = useState(new Date());
@@ -188,7 +188,7 @@ export default function Calendar() {
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
             initialDate={date}
             initialView={screenMap.xs ? 'listWeek' : view}
-            events={INITIAL_EVENTS}
+            events={events}
             eventContent={CalendarEvent}
             editable
             selectable
