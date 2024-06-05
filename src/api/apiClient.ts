@@ -7,14 +7,13 @@ import { t } from '@/locales/i18n';
 import { Result } from '#/api';
 import { ResultEnum } from '#/enum';
 
-// 创建 axios 实例
+console.log('api base url', import.meta.env.VITE_APP_BASE_API);
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_API,
   timeout: 50000,
   headers: { 'Content-Type': 'application/json;charset=utf-8' },
 });
 
-// 请求拦截
 axiosInstance.interceptors.request.use(
   (config) => {
     // 在请求被发送之前做些什么
@@ -30,11 +29,14 @@ axiosInstance.interceptors.request.use(
 // 响应拦截
 axiosInstance.interceptors.response.use(
   (res: AxiosResponse<Result>) => {
+    console.log('axios resp1', res);
+
     if (!res.data) throw new Error(t('sys.api.apiRequestFailed'));
 
     const { status, data, message } = res.data;
-    // 业务请求成功
+
     const hasSuccess = data && Reflect.has(res.data, 'status') && status === ResultEnum.SUCCESS;
+
     if (hasSuccess) {
       return data;
     }
@@ -50,7 +52,6 @@ axiosInstance.interceptors.response.use(
     } catch (error) {
       throw new Error(error as unknown as string);
     }
-    // 对响应错误做点什么
     if (isEmpty(errMsg)) {
       // checkStatus
       // errMsg = checkStatus(response.data.status);

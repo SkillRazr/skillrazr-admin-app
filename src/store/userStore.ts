@@ -60,8 +60,10 @@ export const useSignIn = () => {
   const signIn = async (data: SignInReq) => {
     try {
       const res = await signInMutation.mutateAsync(data);
-      const { user, accessToken, refreshToken } = res;
-      setUserToken({ accessToken, refreshToken });
+      console.log('res from login api', res);
+
+      const { user, accessToken, refreshToken, expiresIn } = res;
+      setUserToken({ accessToken, refreshToken, expiresIn });
       setUserInfo(user);
       navigatge(HOMEPAGE, { replace: true });
 

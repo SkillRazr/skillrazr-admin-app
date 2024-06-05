@@ -1,12 +1,11 @@
-import { Alert, Button, Checkbox, Col, Divider, Form, Input, Row } from 'antd';
+import { Button, Checkbox, Col, Divider, Form, Input, Row } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AiFillGithub, AiFillGoogleCircle, AiFillWechat } from 'react-icons/ai';
 
-import { DEFAULT_USER, TEST_USER } from '@/_mock/assets';
+import { DEFAULT_USER } from '@/_mock/assets';
 import { SignInReq } from '@/api/services/userService';
 import { useSignIn } from '@/store/userStore';
-import ProTag from '@/theme/antd/components/tag';
 import { useThemeToken } from '@/theme/hooks';
 
 import { LoginStateEnum, useLoginStateContext } from './providers/LoginStateProvider';
@@ -42,37 +41,6 @@ function LoginForm() {
         }}
         onFinish={handleFinish}
       >
-        <div className="mb-4 flex flex-col">
-          <Alert
-            type="info"
-            description={
-              <div className="flex flex-col">
-                <div className="flex">
-                  <ProTag className="flex-shrink-0">Admin {t('sys.login.userName')}:</ProTag>
-                  <strong className="ml-1" style={{ color: themeToken.colorInfoTextHover }}>
-                    <span>{DEFAULT_USER.username}</span>
-                  </strong>
-                </div>
-
-                <div className="flex">
-                  <ProTag className="flex-shrink-0">Test {t('sys.login.userName')}:</ProTag>
-                  <strong className="ml-1" style={{ color: themeToken.colorInfoTextHover }}>
-                    <span>{TEST_USER.username}</span>
-                  </strong>
-                </div>
-
-                <div>
-                  <ProTag className="flex-shrink-0">{t('sys.login.password')}:</ProTag>
-                  <strong className=" ml-1" style={{ color: themeToken.colorInfoTextHover }}>
-                    {DEFAULT_USER.password}
-                  </strong>
-                </div>
-              </div>
-            }
-            showIcon
-          />
-        </div>
-
         <Form.Item
           name="username"
           rules={[{ required: true, message: t('sys.login.accountPlaceholder') }]}

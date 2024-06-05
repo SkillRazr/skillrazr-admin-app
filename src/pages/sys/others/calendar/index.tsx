@@ -28,7 +28,7 @@ const DefaultEventInitValue = {
   color: '',
 };
 export default function Calendar() {
-  const [events, setEvents] = useState<any>([]);
+  const [events] = useState<any>([]);
   const fullCalendarRef = useRef<FullCalendar>(null);
   const [view, setView] = useState<ViewType>('dayGridMonth');
   const [date, setDate] = useState(new Date());

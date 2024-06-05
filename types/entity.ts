@@ -3,6 +3,7 @@ import { BasicStatus, PermissionType } from './enum';
 export interface UserToken {
   accessToken?: string;
   refreshToken?: string;
+  expiresIn?: string
 }
 
 export interface UserInfo {

@@ -5,9 +5,9 @@ import { UserApi } from '@/api/services/userService';
 
 import { USER_LIST } from '../assets';
 
+// mock server - this is not used as Node server is used
 const signIn = http.post(`/api${UserApi.SignIn}`, async ({ request }) => {
   const { username, password } = await request.json();
-
   const user = USER_LIST.find((item) => item.username === username);
 
   if (!user || user.password !== password) {
