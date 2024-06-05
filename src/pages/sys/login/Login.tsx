@@ -20,12 +20,12 @@ const { VITE_APP_HOMEPAGE: HOMEPAGE } = import.meta.env;
 
 function Login() {
   const { t } = useTranslation();
-  const token = useUserToken();
+  const { accessToken, expiresIn } = useUserToken();
   const { colorBgElevated } = useThemeToken();
 
-  // 判断用户是否有权限
-  if (token.accessToken) {
-    // 如果有授权，则跳转到首页
+  const isTokenExpired = Date.now() > new Date(expiresIn!).getTime();
+
+  if (accessToken && !isTokenExpired) {
     return <Navigate to={HOMEPAGE} replace />;
   }
 
@@ -40,7 +40,9 @@ function Login() {
           background: bg,
         }}
       >
-        <div className="text-3xl font-bold leading-normal lg:text-4xl xl:text-5xl">Slash Admin</div>
+        <div className="text-3xl font-bold leading-normal lg:text-4xl xl:text-5xl">
+          SkillRazr Admin
+        </div>
         <img className="max-w-[480px] xl:max-w-[560px]" src={DashboardImg} alt="" />
         <Typography.Text className="flex flex-row gap-[16px] text-2xl">
           {t('sys.login.signInSecondTitle')}

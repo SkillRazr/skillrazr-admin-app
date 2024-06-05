@@ -531,3 +531,5 @@ export const TEST_USER = {
   permissions: TEST_ROLE.permission,
 };
 export const USER_LIST = [DEFAULT_USER, TEST_USER];
+export const adminPermissions = ADMIN_ROLE.permission;
+export const testPermmissions = TEST_ROLE.permission;

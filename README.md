@@ -2,18 +2,10 @@
 <br> 
 <br>
 <img src="./src/assets/images/logo.png" height="140" />
-<h1> Slash Admin </h1>
+<h1> SkillRazr Admin App </h1>
 <p style="font-size: 14px">
-  Slash Admin is a modern admin dashboard template built with React 18, Vite, Ant Design, and TypeScript. It is designed to help developers quickly create powerful admin management systems.
+  SkillRazr Admin is a modern admin dashboard template built with React 18, Vite, Ant Design, and TypeScript. It is designed to help developers quickly create powerful admin management systems.
 </p>
-</div>
-
-**English** | [中文](./README.zh-CN.md)
-
-##  Sponsor
-<div style="display: flex; gap: 50px"> 
-  <img style="width:300px" src="https://d3george.github.io/github-static/pay/weixin.jpg" >
-  <img style="width:300px" src="https://d3george.github.io/github-static/pay/buymeacoffee.png" />
 </div>
 
 ## Preview

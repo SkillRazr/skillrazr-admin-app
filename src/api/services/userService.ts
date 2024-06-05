@@ -13,11 +13,11 @@ export interface SignUpReq extends SignInReq {
 export type SignInRes = UserToken & { user: UserInfo };
 
 export enum UserApi {
-  SignIn = '/auth/signin',
-  SignUp = '/auth/signup',
-  Logout = '/auth/logout',
-  Refresh = '/auth/refresh',
-  User = '/user',
+  SignIn = 'signin',
+  SignUp = 'signup',
+  Logout = 'logout',
+  Refresh = 'refresh',
+  User = 'user',
 }
 
 const signin = (data: SignInReq) => apiClient.post<SignInRes>({ url: UserApi.SignIn, data });
